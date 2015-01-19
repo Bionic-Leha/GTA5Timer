@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GTA 5 Таймер</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="gtaleft_text">До выхода GTA5PC осталось:</string>
+    <string name="month">мес.</string>
+    <string name="days">дн.</string>
+    <string name="hours">час.</string>
+    <string name="minutes">мин.</string>
+    <string name="seconds">сек.</string>
+
+</resources>
