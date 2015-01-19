@@ -102,6 +102,9 @@ public class MainActivity extends ActionBarActivity {
 
             if (Global.second_left < 0){
                 Global.minute_left = Global.minute_left - 1;
+                if (Global.minute_left == -1){
+                    Global.minute_left = Global.minute_left + 1;
+                }
                 Global.second_left = Global.second_left + 60;
             }
 
