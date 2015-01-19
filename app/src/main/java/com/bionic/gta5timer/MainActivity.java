@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         Global.gta5date = 83;
-        
+
         mHandler.removeCallbacks(TimeUpdater);
 
     }
@@ -60,9 +60,15 @@ public class MainActivity extends ActionBarActivity {
                 Global.second_left = Global.second_left + 60;
             }
 
+            String info = getString(R.string.gtaleft_text) + ": « "
+                    + Global.month_left + " " + getString(R.string.month) + ", "
+                    + Global.day_left + " " + getString(R.string.days) + ", "
+                    + Global.hour_left + " " + getString(R.string.hours) + ", "
+                    + Global.minute_left + " " + getString(R.string.minutes) + ", "
+                    + Global.second_left + " " + getString(R.string.seconds) + "»" ;
+
             tvMain = (TextView) findViewById(R.id.tvMain);
-            tvMain.setText("GTA 5 to left: " + "« " + Global.month_left + " month, " + Global.day_left
-                    + " days, " + Global.hour_left + " hours, " + Global.minute_left + " minutes, " + Global.second_left + " seconds " + "»");
+            tvMain.setText(info);
             mHandler.postDelayed(this, 1000);
         }
     };
