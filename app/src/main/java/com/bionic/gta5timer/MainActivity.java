@@ -95,16 +95,13 @@ public class MainActivity extends ActionBarActivity {
             Global.minute_left = Global.minute_gta - Global.minute_now;
             Global.second_left = Global.second_gta - Global.second_now;
 
-            if (Global.minute_left < 0){
+            if (Global.minute_left <= 0){
                 Global.hour_left = Global.hour_left - 1;
                 Global.minute_left = Global.minute_left + 60;
             }
 
             if (Global.second_left < 0){
                 Global.minute_left = Global.minute_left - 1;
-                if (Global.minute_left == -1){
-                    Global.minute_left = Global.minute_left + 1;
-                }
                 Global.second_left = Global.second_left + 60;
             }
 
