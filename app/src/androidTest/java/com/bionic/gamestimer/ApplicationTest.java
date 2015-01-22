@@ -1,4 +1,4 @@
-package com.bionic.gta5timer;
+package com.bionic.gamestimer;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.bionic.gta5timer;
+package com.bionic.gamestimer;
 
 /**
  * Created by Leha on 18.01.2015.

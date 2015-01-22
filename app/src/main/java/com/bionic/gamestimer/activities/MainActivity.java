@@ -1,22 +1,19 @@
-package com.bionic.gta5timer.activities;
+package com.bionic.gamestimer.activities;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.format.Time;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.bionic.gta5timer.Global;
-import com.bionic.gta5timer.R;
+import com.bionic.gamestimer.Global;
+import com.bionic.gamestimer.R;
+import com.bionic.gamestimer.fragments.RecyclerViewFragment;
 
 import java.util.Calendar;
 
@@ -43,6 +40,14 @@ public class MainActivity extends ActionBarActivity {
         Global.gta5date = 83;
 
         mHandler.removeCallbacks(TimeUpdater);
+
+        // Дальше пойдет RecycleView...ну или пиздец
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            RecyclerViewFragment fragment = new RecyclerViewFragment();
+            transaction.replace(R.id.sample_content_fragment, fragment);
+            transaction.commit();
+        }
 
     }
 

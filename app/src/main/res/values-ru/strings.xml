@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">GTA 5 Таймер</string>
+    <string name="app_name">Таймер релизов игр</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 

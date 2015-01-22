@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.bionic.gta5timer.fragments;
+package com.bionic.gamestimer.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,8 +26,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 
-import com.bionic.gta5timer.R;
-import com.bionic.gta5timer.recyclerview.CustomAdapter;
+import com.bionic.gamestimer.R;
+import com.bionic.gamestimer.recyclerview.CustomAdapter;
 
 /**
  * Demonstrates the use of {@link android.support.v7.widget.RecyclerView} with a {@link android.support.v7.widget.LinearLayoutManager} and a
@@ -141,7 +141,7 @@ public class RecyclerViewFragment extends Fragment {
     private void initDataset() {
         mDataset = new String[DATASET_COUNT];
         for (int i = 0; i < DATASET_COUNT; i++) {
-            mDataset[i] = "This is element #" + i;
+            mDataset[i] = "This is game #" + i;
         }
     }
 }

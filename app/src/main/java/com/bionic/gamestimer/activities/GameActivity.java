@@ -1,14 +1,9 @@
-package com.bionic.gta5timer.activities;
+package com.bionic.gamestimer.activities;
 
-import android.animation.Animator;
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
-import android.view.ViewAnimationUtils;
 
-import com.bionic.gta5timer.R;
+import com.bionic.gamestimer.R;
 
 /**
  * Created by Leha on 22.01.2015.

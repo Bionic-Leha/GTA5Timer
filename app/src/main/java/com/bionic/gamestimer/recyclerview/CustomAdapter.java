@@ -1,4 +1,4 @@
-package com.bionic.gta5timer.recyclerview;
+package com.bionic.gamestimer.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bionic.gta5timer.R;
+import com.bionic.gamestimer.R;
 
 /**
  * Provide views to RecyclerView with data from mDataSet.

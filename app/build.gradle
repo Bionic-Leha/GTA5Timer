@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.bionic.gta5timer"
+        applicationId "com.bionic.gamestimer"
         minSdkVersion 9
         targetSdkVersion 21
         versionCode 1
