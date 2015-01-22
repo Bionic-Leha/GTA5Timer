@@ -9,5 +9,8 @@
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_huge">64dp</dimen>
 
-    <dimen name="list_item_height">72dp</dimen>
+    <dimen name="cv_margin">7dp</dimen>
+
+    <dimen name="list_item_height_default">72dp</dimen>
+    <dimen name="list_item_height_games">77dp</dimen>
 </resources>
