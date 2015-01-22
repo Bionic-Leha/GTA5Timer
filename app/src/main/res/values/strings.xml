@@ -19,4 +19,19 @@
     <string name="game_name">Game name</string>
     <string name="game_date">Release date</string>
 
+    <string-array name="games">
+        <item>GTA 5 PC</item>
+        <item>Ведьмак 3</item>
+        <item>TES 6</item>
+        <item>Mirrors Edge (Remake)</item>
+        <item>Survival Barren Roads (Android)</item>
+        <item>Project cars</item>
+        <item>order 1883</item>
+        <item>portal 3</item>
+        <item>Half-Life 3</item>
+        <item>L4D 3</item>
+        <item>Fallout 4Fifa 16Batman Arkham Knight</item>
+        <item>the room 3</item>
+    </string-array>
+
 </resources>
