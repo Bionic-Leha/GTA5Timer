@@ -12,4 +12,8 @@
     <string name="minutes">Minutes</string>
     <string name="seconds">Seconds</string>
 
+    <string name="about_game">About game</string>
+    <string name="error">Something wrong</string>
+    <string name="element_text">Element</string>
+
 </resources>
