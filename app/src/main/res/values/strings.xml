@@ -16,4 +16,7 @@
     <string name="error">Something wrong</string>
     <string name="element_text">Element</string>
 
+    <string name="game_name">Game name</string>
+    <string name="game_date">Release date</string>
+
 </resources>
