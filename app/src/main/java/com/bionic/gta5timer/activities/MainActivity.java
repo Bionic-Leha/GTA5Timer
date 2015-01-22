@@ -1,4 +1,4 @@
-package com.bionic.gta5timer;
+package com.bionic.gta5timer.activities;
 
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.bionic.gta5timer.Global;
+import com.bionic.gta5timer.R;
 
 import java.util.Calendar;
 
