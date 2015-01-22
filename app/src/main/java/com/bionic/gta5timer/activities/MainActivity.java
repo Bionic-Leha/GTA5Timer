@@ -1,5 +1,6 @@
 package com.bionic.gta5timer.activities;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
@@ -8,6 +9,8 @@ import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -21,12 +24,21 @@ import java.util.Calendar;
 public class MainActivity extends ActionBarActivity {
 
     TextView tvMain;
+    Button btnGame;
     private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnGame = (Button) findViewById(R.id.btnGame);
+        btnGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, GameActivity.class));
+            }
+        });
 
         Global.gta5date = 83;
 
