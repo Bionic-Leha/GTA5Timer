@@ -38,7 +38,7 @@ public class RecyclerViewFragment extends Fragment {
     private static final String TAG = "RecyclerViewFragment";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
-    private static final int DATASET_COUNT = 600;
+    private static final int DATASET_COUNT = 6000;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -53,6 +53,7 @@ public class RecyclerViewFragment extends Fragment {
     protected RecyclerView mRecyclerView;
     protected CustomAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
+    protected String[] mNameset;
     protected String[] mDataset;
 
     @Override
