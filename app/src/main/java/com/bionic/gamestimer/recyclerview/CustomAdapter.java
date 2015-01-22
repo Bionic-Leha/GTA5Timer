@@ -14,6 +14,7 @@ import com.bionic.gamestimer.R;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     private static final String TAG = "CustomAdapter";
 
+    private String[] mNameSet;
     private String[] mDataSet;
 
     // BEGIN_INCLUDE(recyclerViewSampleViewHolder)
@@ -21,7 +22,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      * Provide a reference to the type of views that you are using (custom ViewHolder)
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final TextView tvGameName;
+        private final TextView tvGameData;
 
         public ViewHolder(View v) {
             super(v);
@@ -32,12 +34,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
                 }
             });
-            textView = (TextView) v.findViewById(R.id.textView);
+            tvGameName = (TextView) v.findViewById(R.id.tvGameName);
+            tvGameData = (TextView) v.findViewById(R.id.tvGameDate);
         }
 
-        public TextView getTextView() {
-            return textView;
+        public TextView getTvName() {
+            return tvGameName;
         }
+
+        public TextView getTvData() {
+            return tvGameData;
+        }
+
+
+
     }
     // END_INCLUDE(recyclerViewSampleViewHolder)
 
@@ -47,6 +57,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
     public CustomAdapter(String[] dataSet) {
+        mNameSet = dataSet;
         mDataSet = dataSet;
     }
 
@@ -69,13 +80,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        viewHolder.getTextView().setText(mDataSet[position]);
+        viewHolder.getTvName().setText(mNameSet[position]);
+        viewHolder.getTvData().setText(mDataSet[position]);
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataSet.length;
+        return mNameSet.length;
     }
 }
