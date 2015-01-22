@@ -16,22 +16,40 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_item_height"
+    android:layout_height="@dimen/list_item_height_games"
 
     android:gravity="center_vertical">
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="370dp"
-        android:layout_height="65dp"
+        android:layout_height="70dp"
         android:layout_gravity="center"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardCornerRadius="4dp"
+        android:soundEffectsEnabled="true"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvGameName"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/element_text" />
+            android:layout_marginLeft="@dimen/cv_margin"
+            android:layout_marginStart="@dimen/cv_margin"
+            android:layout_marginTop="@dimen/cv_margin"
+            android:textColor="@color/black"
+            android:text="@string/game_name" />
+
+        <TextView
+            android:id="@+id/tvGameDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cv_margin"
+            android:layout_marginStart="@dimen/cv_margin"
+            android:layout_marginTop="37dp"
+            android:text="@string/game_date" />
+
     </android.support.v7.widget.CardView>
 
 </FrameLayout>
