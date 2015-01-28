@@ -3,19 +3,32 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
+    signingConfigs {
+        release {
+            storeFile file("E:\\Android\\KeyBionic.jks")
+            storePassword "re7z3k77w9"
+            keyAlias "TestKey"
+            keyPassword "7ccgx7ezhx03"
+        }
 
+    }
     defaultConfig {
         applicationId "com.bionic.gamestimer"
         minSdkVersion 11
         targetSdkVersion 21
         versionCode 1
         versionName "0.0.1"
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
         }
+    }
+    productFlavors {
     }
 }
 
