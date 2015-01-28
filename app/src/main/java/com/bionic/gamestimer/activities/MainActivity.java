@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
 
     TextView tvMain;
     Button btnGame;
+    TextView tvTest;
     private Handler mHandler = new Handler();
 
     @Override
