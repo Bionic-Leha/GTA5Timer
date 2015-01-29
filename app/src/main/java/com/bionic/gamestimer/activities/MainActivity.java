@@ -2,21 +2,21 @@ package com.bionic.gamestimer.activities;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.bionic.gamestimer.Global;
 import com.bionic.gamestimer.R;
-import com.bionic.gamestimer.fragments.RecyclerViewFragment;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,23 +26,28 @@ public class MainActivity extends ActionBarActivity {
     TextView tvTest;
     private Handler mHandler = new Handler();
 
+    int itemnum = 0;
+
+    private ArrayList<HashMap<String, Object>> gamesList;
+    private static final String TITLE = "gamename"; // Название игры
+    private static final String DESCRIPTION = "gamedesc"; // Описание игры
+    private static final String PLATFORM = "gameplatf"; // Платформа
+    private static final String DATE = "gamegate"; // Дата выхода
+    private static final String ICON = "icon";  // Скриншот игры
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        btnGame = (Button) findViewById(R.id.btnGame);
-        btnGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, GameActivity.class));
-            }
-        });
+        setTitle(getString(R.string.games_list));
 
         Global.gta5date = 83;
 
-        mHandler.removeCallbacks(TimeUpdater);
+        //mHandler.removeCallbacks(TimeUpdater);
 
+        createList();
+
+        /*
         // Дальше пойдет RecycleView...ну или пиздец
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -50,9 +55,54 @@ public class MainActivity extends ActionBarActivity {
             transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
         }
+        */
 
     }
 
+    public void createList() {
+
+        String PC = getString(R.string.pc);
+        String PS3 = getString(R.string.ps3);
+        String PS4 = getString(R.string.ps4);
+        String X360 = getString(R.string.xbox_360);
+        String XONE = getString(R.string.xbox_one);
+        String ANDROID = getString(R.string.android);
+        String IOS = getString(R.string.ios);
+        String OUTDAY = getString(R.string.out_date);
+        String comma = ", ";
+
+
+        ListView lvGames = (ListView) findViewById(R.id.lvGames);
+
+        // создаем массив списков
+        gamesList = new ArrayList<HashMap<String, Object>>();
+        HashMap<String, Object> games;
+
+        games = new HashMap<String, Object>();
+        games.put(TITLE, getString(R.string.gta5_name_1)); // Название
+        games.put(DESCRIPTION, getString(R.string.gta5_desc_1)); // Описание
+        games.put(PLATFORM, PC); // Платформа
+        games.put(DATE, OUTDAY + ": " + getString(R.string.gta5_date_1)); // Дата выхода
+        games.put(ICON, R.drawable.ic_gta); // Картинка
+        gamesList.add(games);
+
+        games = new HashMap<String, Object>();
+        games.put(TITLE, getString(R.string.witcher_name2));
+        games.put(DESCRIPTION, getString(R.string.witcher_desc2));
+        games.put(PLATFORM, PC + comma + PS4 + comma + XONE);
+        games.put(DATE, OUTDAY + ": " + getString(R.string.witcher_date2));
+        games.put(ICON, R.drawable.ic_witcher);
+        itemnum++;
+        gamesList.add(games);
+
+        SimpleAdapter adapter = new SimpleAdapter(this, gamesList,
+                R.layout.list_item, new String[]{TITLE, DESCRIPTION, PLATFORM, DATE, ICON},
+                new int[]{R.id.tvTitle, R.id.tvDesc, R.id.tvPlatforms, R.id.tvDate, R.id.img});
+
+        lvGames.setAdapter(adapter);
+    }
+
+    /*
     // Описание Runnable-объекта
     private Runnable TimeUpdater = new Runnable() {
         public void run() {
@@ -64,6 +114,7 @@ public class MainActivity extends ActionBarActivity {
             Global.hour_now = now.get(Calendar.HOUR);
             Global.day_now = now.get(Calendar.DAY_OF_MONTH);
             Global.month_now = now.get(Calendar.MONTH);
+            Global.days_month = now.getActualMaximum(Calendar.DAY_OF_MONTH);
             Global.month_now = Global.month_now + 1;
 
             Global.day_left = Global.day_gta - Global.day_now;
@@ -72,14 +123,19 @@ public class MainActivity extends ActionBarActivity {
             Global.minute_left = Global.minute_gta - Global.minute_now;
             Global.second_left = Global.second_gta - Global.second_now;
 
+            if (Global.day_left <= 0) {
+                Global.month_left -= 1;
+                Global.day_left += Global.days_month;
+            }
+
             if (Global.minute_left <= 0) {
-                Global.hour_left = Global.hour_left - 1;
-                Global.minute_left = Global.minute_left + 60;
+                Global.hour_left -= 1;
+                Global.minute_left += 60;
             }
 
             if (Global.second_left < 0) {
-                Global.minute_left = Global.minute_left - 1;
-                Global.second_left = Global.second_left + 60;
+                Global.minute_left -= 1;
+                Global.second_left += 60;
             }
 
             String info = getString(R.string.gtaleft_text) + ": « "
@@ -87,13 +143,15 @@ public class MainActivity extends ActionBarActivity {
                     + Global.day_left + " " + getString(R.string.days) + ", "
                     + Global.hour_left + " " + getString(R.string.hours) + ", "
                     + Global.minute_left + " " + getString(R.string.minutes) + ", "
-                    + Global.second_left + " " + getString(R.string.seconds) + "»" ;
+                    + Global.second_left + " " + getString(R.string.seconds) + "»";
 
             tvMain = (TextView) findViewById(R.id.tvMain);
             tvMain.setText(info);
+
             mHandler.postDelayed(this, 1000);
         }
     };
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,7 +168,8 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            startActivity(new Intent(MainActivity.this, GameActivity.class));
             return true;
         }
 
@@ -120,7 +179,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         // Удаляем Runnable-объект
-        mHandler.removeCallbacks(TimeUpdater);
+        //mHandler.removeCallbacks(TimeUpdater);
         super.onPause();
     }
 
@@ -128,7 +187,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         // Добавляем Runnable-объект
-        mHandler.postDelayed(TimeUpdater, 1000);
+        //mHandler.postDelayed(TimeUpdater, 1000);
     }
 
 }
