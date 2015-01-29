@@ -3,7 +3,7 @@
 
     <string name="app_name">Games Releases Timer</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about">About app</string>
 
     <string name="gtaleft_text">GTA5PC to left</string>
     <string name="month">Months</string>
@@ -17,23 +17,48 @@
     <string name="element_text">Element</string>
 
     <string name="game_name">Game name</string>
+    <string name="game_desc">Game description</string>
     <string name="game_date">Release date</string>
 
     <string-array name="games">
-        <item>GTA 5 PC</item>
-        <item>Ведьмак 3</item>
-        <item>TES 6</item>
-        <item>Mirrors Edge (Remake)</item>
         <item>Survival Barren Roads (Android)</item>
-        <item>Project cars</item>
-        <item>order 1883</item>
         <item>portal 3</item>
         <item>Half-Life 3</item>
         <item>L4D 3</item>
         <item>Fallout 4</item>
-        <item>FIFA 16</item>
-        <item>Batman Arkham Knight</item>
         <item>the room 3</item>
     </string-array>
+
+    <string name="gta5_name_1" translatable="false">Grand Theft Auto 5</string>
+    <string name="gta5_desc_1">Game-legend</string>
+    <string name="gta5_date_1" translatable="false">24.05.2014</string>
+
+    <string name="witcher_name2" translatable="false">The Witcher 3</string>
+    <string name="witcher_desc2">Wild Hunt concludes the story of the witcher Geralt of Rivia</string>
+    <string name="witcher_date2" translatable="false">19.05.2015</string>
+
+    <string name="tes6_n3" translatable="false">The Elder Scrolls 6</string>
+
+    <string name="me2_n4" translatable="false">Mirrors Edge (Remake)</string>
+
+    <string name="project_cars_n5" translatable="false">Project Card</string>
+
+    <string name="order_n6" translatable="false">Order 1883</string>
+
+    <string name="fifa16_n6" translatable="false">FIFA 16</string>
+
+    <string name="batman_ak_n7" translatable="false">Batman Arkham Knight</string>
+
+
+    <string name="games_list">Games list</string>
+    <string name="out_date">Out date</string>
+
+    <string name="pc" translatable="false">PC</string>
+    <string name="xbox_360" translatable="false">xBox 360</string>
+    <string name="xbox_one" translatable="false">xBox One</string>
+    <string name="ps3" translatable="false">PS 3</string>
+    <string name="ps4" translatable="false">PS 4</string>
+    <string name="android" translatable="false">Android</string>
+    <string name="ios" translatable="false">iOS</string>
 
 </resources>
