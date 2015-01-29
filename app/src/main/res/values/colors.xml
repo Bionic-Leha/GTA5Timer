@@ -6,4 +6,9 @@
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#388E3C</color>
     <color name="colorAccent">#fff</color>
+
+    <color name="color_name">#000</color>
+    <color name="color_desc">#212121</color>
+    <color name="color_platfotms">#424242</color>
+    <color name="color_date">#616161</color>
 </resources>
