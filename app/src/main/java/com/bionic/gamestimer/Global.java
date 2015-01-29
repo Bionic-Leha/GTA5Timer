@@ -12,6 +12,7 @@ public class Global {
     public static int hour_now;
     public static int day_now;
     public static int month_now;
+    public static int days_month;
 
     public static int month_gta=3;
     public static int day_gta=24;
