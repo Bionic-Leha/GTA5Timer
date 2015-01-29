@@ -11,5 +11,16 @@
     <string name="hours">час.</string>
     <string name="minutes">мин.</string>
     <string name="seconds">сек.</string>
+    <string name="games_list">Список игр</string>
+    <string name="game_name">Название игры</string>
+    <string name="game_date">Дата релиза</string>
+    <string name="error">Что-то пошло не так..</string>
+    <string name="element_text">Элемент</string>
+    <string name="about_game">О игре</string>
+    <string name="out_date">Дата выхода</string>
+    <string name="action_about">О программе</string>
+    <string name="game_desc">Описание игры</string>
+    <string name="witcher_desc2">Новое вторжение Нильфгаарда и конфликт с Дикой Охотой.</string>
+    <string name="gta5_desc_1">Игра-легенда</string>
 
 </resources>
