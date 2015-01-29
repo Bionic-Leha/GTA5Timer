@@ -13,4 +13,9 @@
 
     <dimen name="list_item_height_default">72dp</dimen>
     <dimen name="list_item_height_games">77dp</dimen>
+
+    <dimen name="lv_hand_margin">10dp</dimen>
+    <dimen name="lv_topbot_margin_l">12dp</dimen>
+    <dimen name="lv_topbot_margin_m">4dp</dimen>
+    <dimen name="lv_topbot_margin_s">2dp</dimen>
 </resources>
