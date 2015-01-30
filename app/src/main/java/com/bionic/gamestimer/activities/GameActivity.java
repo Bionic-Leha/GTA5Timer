@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,34 +22,8 @@ import android.widget.TextView;
 import com.bionic.gamestimer.R;
 import com.bionic.gamestimer.base.BaseActivity;
 
-
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-
-import com.musenkishi.wally.anim.interpolator.EaseInOutBezierInterpolator;
-import com.musenkishi.wally.base.WallyApplication;
-import com.musenkishi.wally.dataprovider.DataProvider;
-import com.musenkishi.wally.dataprovider.FileManager;
-import com.musenkishi.wally.dataprovider.models.DataProviderError;
-import com.musenkishi.wally.dataprovider.models.SaveImageRequest;
-import com.musenkishi.wally.models.Author;
-import com.musenkishi.wally.models.Image;
-import com.musenkishi.wally.models.ImagePage;
-import com.musenkishi.wally.models.Size;
-import com.musenkishi.wally.observers.FileChangeReceiver;
-import com.musenkishi.wally.util.Blur;
-import com.musenkishi.wally.util.PaletteRequest;
-import com.musenkishi.wally.views.ObservableScrollView;
-
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
-
-import static com.musenkishi.wally.views.ObservableScrollView.ScrollViewListener;
-
 
 /**
  * Created by Leha on 22.01.2015.
