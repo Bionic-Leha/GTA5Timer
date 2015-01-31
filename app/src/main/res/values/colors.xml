@@ -81,4 +81,9 @@
     <color name="Dialog.Button.Positive">#78909c</color>
     <color name="Dialog.Button.Negative">@color/Black.Light</color>
     <color name="Dialog.Button.Delete">#e51c23</color>
+	
+	<color name="primary">#009688</color>
+    <color name="primaryDark">#00796b</color>
+    <color name="accent">#eeff41</color>
+    <color name="accentLight">#F4FF81</color>
 </resources>
