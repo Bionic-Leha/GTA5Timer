@@ -7,6 +7,9 @@
     <color name="colorPrimaryDark">#388E3C</color>
     <color name="colorAccent">#fff</color>
 
+    <color name="colorFabAccent">#1565C0</color>
+    <color name="colorFabAccentLight">#1E88E5</color>
+
     <color name="color_name">#000</color>
     <color name="color_desc">#212121</color>
     <color name="color_platfotms">#424242</color>
