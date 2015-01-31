@@ -169,7 +169,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            startActivity(new Intent(MainActivity.this, GameActivity.class));
+            startActivity(new Intent(MainActivity.this, GameInfoActivity.class));
             return true;
         }
 
