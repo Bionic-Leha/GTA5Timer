@@ -17,8 +17,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.GameInfoActivity"
-            android:label="@string/about_game"
+            android:name=".activities.AboutActivity"
+            android:label="@string/action_about"
+            android:theme="@style/AppTheme.Toolbar">
+        </activity>
+        <activity
+            android:name=".activities.TimerDialog"
+            android:label="@string/action_about"
             android:theme="@style/AppTheme.Toolbar">
         </activity>
     </application>
