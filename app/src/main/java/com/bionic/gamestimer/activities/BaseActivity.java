@@ -83,6 +83,25 @@ public abstract class BaseActivity extends ActionBarActivity {
         return getDummyData(NUM_OF_ITEMS);
     }
 
+    public void setListView(ListView listView) {
+        // создаем массив списков
+        infoList = new ArrayList<HashMap<String, Object>>();
+        HashMap<String, Object> games;
+
+        games = new HashMap<String, Object>();
+        games.put(TITLE, getString(R.string.gta5_name_1)); // Название
+        games.put(DESCRIPTION, getString(R.string.gta5_desc_1)); // Описание
+        games.put(PLATFORM, "TEEEST"); // Платформа
+        games.put(ICON, R.drawable.ic_gta); // Картинка
+        infoList.add(games);
+
+        SimpleAdapter adapter = new SimpleAdapter(this, infoList,
+                R.layout.list_item, new String[]{TITLE, DESCRIPTION, PLATFORM, ICON},
+                new int[]{R.id.tvTitle, R.id.tvDesc, R.id.tvPlatforms, R.id.tvDate, R.id.img});
+
+        listView.setAdapter(adapter);
+    }
+
     public static ArrayList<HashMap<String, Object>> getListData(){
         return getListData(NUM_IDS);
     }
