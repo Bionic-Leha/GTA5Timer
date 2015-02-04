@@ -61,7 +61,14 @@
     <string name="android" translatable="false">Android</string>
     <string name="ios" translatable="false">iOS</string>
 
+    <string name="detail_info">Detailed information</string>
+    <string name="imp_info">Important information</string>
+    <string name="ok">OK</string>
+    <string name="help">Help</string>
 
+    <string name="first_run">Welcome! This program will help you to find out information about new games, you can see the timer in real time, to read some of the information as well as being open the article on Wikipedia. To view information about the game - just click on it.</string>
+
+    <!--
 	<string name="title_activity_actionbarcontrolgridview">GridView &amp; Action Bar</string>
     <string name="title_activity_actionbarcontrollistview">ListView &amp; Action Bar</string>
     <string name="title_activity_actionbarcontrolrecyclerview">RecyclerView &amp; Action Bar</string>
@@ -122,6 +129,7 @@ Quam libero nulla netus eu porta curae, ut nulla bibendum facilisis et urna sed,
     <string name="msg_about_github_url">https://github.com/ksoichiro/Android-ObservableScrollView</string>
     <string name="msg_about_library_description">Android-ObservableScrollView is a library to observe scroll events for scrollable views.</string>
     <string name="msg_android_trademark">Android is a trademark of Google Inc.</string>
+    -->
     <string name="desc_about_app">About this app</string>
 
 </resources>
