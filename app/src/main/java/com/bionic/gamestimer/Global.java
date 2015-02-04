@@ -25,4 +25,12 @@ public class Global {
     public static int hour_left;
     public static int day_left;
     public static int month_left;
+
+    public static int second_game;
+    public static int minute_game;
+    public static int hour_game;
+    public static int day_game;
+    public static int month_game;
+
+    public static final String PREFS_SAVES = "GameSaves";
 }
