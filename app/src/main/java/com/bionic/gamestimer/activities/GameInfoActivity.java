@@ -89,7 +89,9 @@ public class GameInfoActivity extends BaseActivity implements ObservableScrollVi
 
         listView.addHeaderView(paddingView);
         //setDummyData(listView);
-        setListData(listView);
+        //setListData(listView);
+        setListView(listView);
+
         mTitleView = (TextView) findViewById(R.id.title);
         mTitleView.setText(getTitle());
         setTitle(null);
@@ -97,7 +99,6 @@ public class GameInfoActivity extends BaseActivity implements ObservableScrollVi
         mFabMargin = getResources().getDimensionPixelSize(R.dimen.margin_standard);
         ViewHelper.setScaleX(mFab, 0);
         ViewHelper.setScaleY(mFab, 0);
-
         // mListBackgroundView makes ListView's background except header view.
         mListBackgroundView = findViewById(R.id.list_background);
         final View contentView = getWindow().getDecorView().findViewById(android.R.id.content);
