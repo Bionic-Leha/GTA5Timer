@@ -19,6 +19,8 @@
     <dimen name="lv_topbot_margin_m">4dp</dimen>
     <dimen name="lv_topbot_margin_s">2dp</dimen>
 
+    <dimen name="icon_margin">10dp</dimen>
+
 
 	<dimen name="margin_standard">16dp</dimen>
     <dimen name="margin_short">8dp</dimen>
