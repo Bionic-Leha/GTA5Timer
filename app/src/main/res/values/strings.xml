@@ -66,6 +66,8 @@
     <string name="ok">OK</string>
     <string name="help">Help</string>
 
+    <string name="loading">Loading&#8230;</string>
+
     <string name="first_run">Welcome! This program will help you to find out information about new games, you can see the timer in real time, to read some of the information as well as being open the article on Wikipedia. To view information about the game - just click on it.</string>
 
     <!--
