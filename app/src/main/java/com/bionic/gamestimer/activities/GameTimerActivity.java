@@ -1,10 +1,15 @@
 package com.bionic.gamestimer.activities;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +21,7 @@ import java.util.Calendar;
 /**
  * Created by Leha on 17.02.2015.
  */
-public class GameTimerActivity extends ActionBarActivity {
+public class GameTimerActivity extends Activity {
 
     ImageView ivScreen;
     TextView tvTimer;
@@ -28,18 +33,35 @@ public class GameTimerActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_timer);
 
+        Log.d("Current API", String.valueOf(android.os.Build.VERSION.SDK_INT));
+
+
+
+        if (android.os.Build.VERSION.SDK_INT == 21){
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
         ivScreen = (ImageView) findViewById(R.id.ivScreen);
-        Drawable screenshot= getResources().getDrawable(Global.current_screenshot);
-        ivScreen.setBackgroundDrawable(screenshot);
+
+        if (Global.current_screenshot != 0){
+            Drawable screenshot= getResources().getDrawable(Global.current_screenshot);
+            ivScreen.setImageDrawable(screenshot);
+        }
 
         mHandler.removeCallbacks(TimeUpdater);
+
+        tvTimer = (TextView) findViewById(R.id.tvTimer);
+        tvTimer.setText(getString(R.string.loading));
 
     }
 
     // Описание Runnable-объекта
     public Runnable TimeUpdater = new Runnable() {
         public void run() {
-            Log.d("New", " ok");
             Calendar now = Calendar.getInstance();
             Global.currentday = now.get(Calendar.DAY_OF_YEAR);
 
@@ -76,12 +98,11 @@ public class GameTimerActivity extends ActionBarActivity {
                 Global.second_left += 60;
             }
 
-            info = getString(R.string.game_left) + ": « "
-                    + Global.month_left + " " + getString(R.string.month) + ", "
+            info =  + Global.month_left + " " + getString(R.string.month) + ", "
                     + Global.day_left + " " + getString(R.string.days) + ", "
                     + Global.hour_left + " " + getString(R.string.hours) + ", "
                     + Global.minute_left + " " + getString(R.string.minutes) + ", "
-                    + Global.second_left + " " + getString(R.string.seconds) + "»";
+                    + Global.second_left + " " + getString(R.string.seconds);
 
             tvTimer = (TextView) findViewById(R.id.tvTimer);
             tvTimer.setText(info);
