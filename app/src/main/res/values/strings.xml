@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_about">About app</string>
 
-    <string name="gtaleft_text">GTA5PC to left</string>
+    <string name="game_left">This game to left</string>
     <string name="month">Months</string>
     <string name="days">Days</string>
     <string name="hours">Hours</string>
