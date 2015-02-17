@@ -36,7 +36,7 @@ public class GameTimerActivity extends Activity {
         Log.d("Current API", String.valueOf(android.os.Build.VERSION.SDK_INT));
 
 
-
+        /*
         if (android.os.Build.VERSION.SDK_INT == 21){
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -44,6 +44,7 @@ public class GameTimerActivity extends Activity {
 
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
+        */
 
         ivScreen = (ImageView) findViewById(R.id.ivScreen);
 
