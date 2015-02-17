@@ -26,6 +26,10 @@
             android:label="@string/action_about"
             android:theme="@style/AppTheme.Toolbar">
         </activity>
+        <activity
+            android:name=".activities.GameTimerActivity"
+            android:label="@string/action_about">
+        </activity>
     </application>
 
 </manifest>
