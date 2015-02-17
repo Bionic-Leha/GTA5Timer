@@ -150,8 +150,12 @@ public class MainActivity extends ActionBarActivity {
                         showDialog(IDD_THREE_BUTTONS);
                         break;
                     case 1:
+                        /*
                         Intent browserIntent1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ru.wikipedia.org/wiki/The_Witcher_3:_Wild_Hunt"));
                         startActivity(browserIntent1);
+                        */
+                        Global.current_screenshot = R.drawable.gtavscr;
+                        startActivity(new Intent(MainActivity.this, GameTimerActivity.class));
                         break;
                     default:
                         break;
@@ -247,7 +251,7 @@ public class MainActivity extends ActionBarActivity {
                 Global.second_left += 60;
             }
 
-            MainActivity.info = getString(R.string.gtaleft_text) + ": « "
+            MainActivity.info = getString(R.string.game_left) + ": « "
                     + Global.month_left + " " + getString(R.string.month) + ", "
                     + Global.day_left + " " + getString(R.string.days) + ", "
                     + Global.hour_left + " " + getString(R.string.hours) + ", "
