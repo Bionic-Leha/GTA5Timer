@@ -28,8 +28,7 @@
         </activity>
         <activity
             android:name=".activities.GameTimerActivity"
-            android:label="@string/action_about"
-            android:theme="@style/GameInfo">
+            android:label="@string/action_about">
         </activity>
     </application>
 
