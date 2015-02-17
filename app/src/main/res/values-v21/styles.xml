@@ -6,21 +6,9 @@
         <item name="colorAccent">#fff</item>
     </style>
 
-    <style name="GameInfo" parent="android:Theme.Material.Light.NoActionBar">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:windowActionBar">false</item>
-        <!--   your app branding color for the app bar -->
-        <item name="android:colorPrimary">@android:color/transparent</item>
-        <!--   darker variant for the status bar and contextual app bars -->
-        <item name="android:colorPrimaryDark">@android:color/transparent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:fitsSystemWindows">true</item>
-
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <style name="GameInfo" parent="android:Theme.Material.Light.NoActionBar.TranslucentDecor">
+        <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
 </resources>
