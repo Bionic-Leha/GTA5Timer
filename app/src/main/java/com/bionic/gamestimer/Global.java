@@ -7,6 +7,9 @@ public class Global {
     public static int gta5date;
     public static int currentday;
 
+    public static int current_screenshot;
+    public static int out_day;
+
     public static int second_now;
     public static int minute_now;
     public static int hour_now;
