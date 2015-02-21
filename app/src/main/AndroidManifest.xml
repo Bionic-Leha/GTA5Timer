@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bionic.gamestimer" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,19 +19,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--Include the AdActivity configChanges and theme. -->
+        <activity android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
         <activity
             android:name=".activities.AboutActivity"
             android:label="@string/action_about"
-            android:theme="@style/AppTheme.Toolbar">
+            android:parentActivityName=".activities.MainActivity">
         </activity>
         <activity
             android:name=".activities.TimerDialog"
             android:label="@string/action_about"
-            android:theme="@style/AppTheme.Toolbar">
+            android:theme="@style/AppTheme.Toolbar"
+            android:parentActivityName=".activities.MainActivity">
         </activity>
         <activity
             android:name=".activities.GameTimerActivity"
-            android:label="@string/action_about">
+            android:label="@string/about_game"
+            android:parentActivityName=".activities.MainActivity">
         </activity>
     </application>
 

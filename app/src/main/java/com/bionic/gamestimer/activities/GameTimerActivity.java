@@ -1,32 +1,59 @@
 package com.bionic.gamestimer.activities;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.graphics.Palette;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bionic.gamestimer.Global;
 import com.bionic.gamestimer.R;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Logger;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * Created by Leha on 17.02.2015.
  */
-public class GameTimerActivity extends Activity {
+public class GameTimerActivity extends ActionBarActivity {
 
     ImageView ivScreen;
+    ImageView ivIcon;
     TextView tvTimer;
+    TextView tvGameName;
+    TextView tvGameDesc;
+    Button btnWiki;
+    Button btnShop;
     String info;
     private Handler mHandler = new Handler();
+
+    public int colorPrimary = Color.BLACK;
+    public int colorPrimaryDark = Color.BLACK;
+
+    private static final String PROPERTY_ID = "UA-42401203-8";
+    static HashMap<MainActivity.TrackerName, Tracker> mTrackers = new HashMap<>();
+
+    int x;
+    int y;
+
+    private static final Map<Bitmap, Palette> CACHE = new WeakHashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +62,85 @@ public class GameTimerActivity extends Activity {
 
         Log.d("Current API", String.valueOf(android.os.Build.VERSION.SDK_INT));
 
+        ivScreen = (ImageView) findViewById(R.id.ivScreen);
+        ivIcon = (ImageView) findViewById(R.id.ivIcon);
+        tvTimer = (TextView) findViewById(R.id.tvTimer);
+        tvGameName = (TextView) findViewById(R.id.tvGameName);
+        tvGameDesc = (TextView) findViewById(R.id.tvGameDesc);
+        btnWiki = (Button) findViewById(R.id.btnWiki);
+        btnShop = (Button) findViewById(R.id.btnShop);
+        Calendar now = Calendar.getInstance();
+        Global.currentday = now.get(Calendar.DAY_OF_YEAR);
+
+        GoogleAnalytics.getInstance(this).newTracker(PROPERTY_ID);
+        GoogleAnalytics.getInstance(this).getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
+        Tracker tracker = getTracker(MainActivity.TrackerName.APP_TRACKER);
+        tracker.setScreenName("Конкретная игра");
+        tracker.send(new HitBuilders.AppViewBuilder().build());
+        tracker.enableAdvertisingIdCollection(true);
+
+        tvTimer.setText(getString(R.string.loading));
+        tvGameName.setText(Global.game_name);
+        tvGameDesc.setText(Global.game_desc);
+
+        if (Global.currentday <= Global.out_day_full){
+            mHandler.removeCallbacks(TimeUpdater);
+        }else {
+            tvTimer.setText(getString(R.string.game_released));
+        }
+
+        Drawable screenshot = getResources().getDrawable(Global.current_screenshot);
+        Drawable icon = getResources().getDrawable(Global.current_icon);
+        ivScreen.setImageDrawable(screenshot);
+        ivIcon.setImageDrawable(icon);
+
+        if (Global.current_screenshot != 0){
+            screenshot = getResources().getDrawable(Global.current_screenshot);
+            ivScreen.setImageDrawable(screenshot);
+        }
+
+        Bitmap bitmap = ((BitmapDrawable) ivScreen.getDrawable()).getBitmap();
+        int pixel = bitmap.getPixel(x,y);
+        colorPrimary = pixel;
+        colorPrimaryDark = darker(colorPrimary);
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(colorPrimary));
+
+        if (android.os.Build.VERSION.SDK_INT == 21){
+            getWindow().setStatusBarColor(colorPrimaryDark);
+        }
+
+        btnWiki.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(Global.wiki_link)));
+                startActivity(browserIntent1);
+            }
+        });
+
+        btnShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(Global.shop_link)));
+                startActivity(browserIntent);
+            }
+        });
+
+        /*
+        Bitmap bitmap = ((BitmapDrawable) ivScreen.getDrawable()).getBitmap();
+        Palette palette = Palette.generate(bitmap);
+        CACHE.put(bitmap, palette);
+
+        Palette p = PaletteTransformation.getPalette(bitmap);
+        colorPrimary = p.getVibrantColor(Color.BLACK);
+        colorPrimaryDark = darker(colorPrimary);
+        if (colorPrimary == Color.BLACK || colorPrimaryDark == Color.BLACK) {
+            colorPrimary = p.getMutedColor(Color.BLACK);
+            colorPrimaryDark = darker(colorPrimary);
+        }
+        //toolbarBackground.setColor(colorPrimary);
+        //statusBar.setBackgroundColor(colorPrimaryDark);
+        */
 
         /*
         if (android.os.Build.VERSION.SDK_INT == 21){
@@ -46,18 +152,30 @@ public class GameTimerActivity extends Activity {
         }
         */
 
-        ivScreen = (ImageView) findViewById(R.id.ivScreen);
+    }
 
-        if (Global.current_screenshot != 0){
-            Drawable screenshot= getResources().getDrawable(Global.current_screenshot);
-            ivScreen.setImageDrawable(screenshot);
+    public synchronized Tracker getTracker(MainActivity.TrackerName trackerId) {
+        if (!mTrackers.containsKey(trackerId)) {
+
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            analytics.getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
+            Tracker t = (trackerId == MainActivity.TrackerName.APP_TRACKER) ? analytics.newTracker(PROPERTY_ID)
+                    : (trackerId == MainActivity.TrackerName.GLOBAL_TRACKER) ? analytics.newTracker(
+                    R.xml.global_tracker)
+                    : analytics.newTracker(R.xml.ecommerce_tracker);
+            t.enableAdvertisingIdCollection(true);
+            mTrackers.put(trackerId, t);
         }
+        return mTrackers.get(trackerId);
+    }
 
-        mHandler.removeCallbacks(TimeUpdater);
+    public static int darker(int c) {
 
-        tvTimer = (TextView) findViewById(R.id.tvTimer);
-        tvTimer.setText(getString(R.string.loading));
+        int r = Color.red(c);
+        int b = Color.blue(c);
+        int g = Color.green(c);
 
+        return Color.rgb((int) (r * .7), (int) (g * .7), (int) (b * .7));
     }
 
     // Описание Runnable-объекта
@@ -70,19 +188,16 @@ public class GameTimerActivity extends Activity {
             Global.minute_now = now.get(Calendar.MINUTE);
             Global.hour_now = now.get(Calendar.HOUR);
             Global.day_now = now.get(Calendar.DAY_OF_MONTH);
-            Global.month_now = now.get(Calendar.MONTH);
+            Global.month_now = now.get(Calendar.MONTH) + 1;
+            Global.year_now = now.get(Calendar.YEAR);
+
             Global.days_month = now.getActualMaximum(Calendar.DAY_OF_MONTH);
-            Global.month_now = Global.month_now + 1;
 
-            Global.hour_game = 12;
-            Global.minute_game = 0;
-            Global.second_game = 0;
-
-            Global.day_left = Global.day_game - Global.day_now;
-            Global.month_left = Global.month_game - Global.month_now;
-            Global.hour_left = Global.hour_game - Global.hour_now;
-            Global.minute_left = Global.minute_game - Global.minute_now;
-            Global.second_left = Global.second_game - Global.second_now;
+            Global.second_left = Global.out_second - Global.second_now;
+            Global.minute_left = Global.out_minute - Global.minute_now;
+            Global.hour_left = Global.out_hour - Global.hour_now;
+            Global.day_left = Global.out_day - Global.day_now;
+            Global.month_left = Global.out_month - Global.month_now;
 
             if (Global.day_left <= 0) {
                 Global.month_left -= 1;
@@ -117,6 +232,13 @@ public class GameTimerActivity extends Activity {
         // Удаляем Runnable-объект
         mHandler.removeCallbacks(TimeUpdater);
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // Удаляем Runnable-объект
+        mHandler.removeCallbacks(TimeUpdater);
+        super.onDestroy();
     }
 
     @Override

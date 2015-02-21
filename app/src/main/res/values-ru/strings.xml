@@ -3,7 +3,7 @@
 
     <string name="app_name">Таймер релизов игр</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Настройки</string>
 
     <string name="game_left">До выхода игры осталось:</string>
     <string name="month">мес.</string>
@@ -27,5 +27,10 @@
     <string name="help">Помощь</string>
     <string name="loading">Загрузка&#8230;</string>
     <string name="shop">Магазин</string>
+    <string name="witcher_wiki">https://ru.wikipedia.org/wiki/The_Witcher_3:_Wild_Hunt</string>
+    <string name="gta5_wiki">https://ru.wikipedia.org/wiki/Grand_Theft_Auto_V</string>
+    <string name="game_released">Игра уже вышла</string>
+    <string name="detail_info">Детальная информация</string>
+    <string name="desc_about_app">Про это приложение</string>
 
 </resources>

@@ -21,6 +21,8 @@
 
     <dimen name="icon_margin">10dp</dimen>
 
+    <dimen name="separator_margin">13dp</dimen>
+
 
 	<dimen name="margin_standard">16dp</dimen>
     <dimen name="margin_short">8dp</dimen>

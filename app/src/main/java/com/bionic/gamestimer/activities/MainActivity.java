@@ -6,14 +6,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,9 +25,17 @@ import android.widget.TextView;
 import com.bionic.gamestimer.Global;
 import com.bionic.gamestimer.R;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Logger;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,20 +43,19 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
-
-    TextView tvMain;
-    Button btnGame;
-    TextView tvTest;
     private Handler mHandler = new Handler();
 
     int itemnum = 0;
 
-    AlertDialog.Builder ad;
-    Context context;
-
     // идентификатор диалогового окна AlertDialog с кнопками
     private final int IDD_THREE_BUTTONS = 0;
     private final int FIRST_RUN = 1;
+
+    private static final String PROPERTY_ID = "UA-42401203-8";
+    static HashMap<TrackerName, Tracker> mTrackers = new HashMap<>();
+
+    public int colorPrimary = Color.BLACK;
+    public int colorPrimaryDark = Color.BLACK;
 
     private ArrayList<HashMap<String, Object>> gamesList;
     private static final String TITLE = "gamename"; // Название игры
@@ -53,6 +64,26 @@ public class MainActivity extends ActionBarActivity {
     private static final String DATE = "gamegate"; // Дата выхода
     private static final String TIMER = "game_timer"; // Таймер выхода
     private static final String ICON = "icon";  // Скриншот игры
+
+    int color_id_1 = 0xFFF44336;
+    int color_id_2 = 0xFFE91E63;
+    int color_id_3 = 0xFF9C27B0;
+    int color_id_4 = 0xFF673AB7;
+    int color_id_5 = 0xFF3F51B5;
+    int color_id_6 = 0xFF2196F3;
+    int color_id_7 = 0xFF03A9F4;
+    int color_id_8 = 0xFF00BCD4;
+    int color_id_9 = 0xFF009688;
+    int color_id_10= 0xFF4CAF50;
+    int color_id_11= 0xFF8BC34A;
+    int color_id_12 = 0xFFCDDC39;
+    int color_id_13 = 0xFFFFEB3B;
+    int color_id_14 = 0xFFFFC107;
+    int color_id_15 = 0xFFFF9800;
+    int color_id_16 = 0xFFFF5722;
+    int color_id_17 = 0xFF795548;
+    int color_id_18 = 0xFF9E9E9E;
+    int color_id_19 = 0xFF607D8B;
 
     public static String info;
 
@@ -65,7 +96,7 @@ public class MainActivity extends ActionBarActivity {
         setTitle(getString(R.string.games_list));
 
         Global.gta5date = 83;
-
+        setABColor();
         SharedPreferences saves = getSharedPreferences(Global.PREFS_SAVES, MODE_PRIVATE);
 
         // Первый запуск!?
@@ -73,6 +104,13 @@ public class MainActivity extends ActionBarActivity {
             showDialog(FIRST_RUN);
             saves.edit().putBoolean("first_launch_1", false).apply();
         }
+
+        GoogleAnalytics.getInstance(this).newTracker(PROPERTY_ID);
+        GoogleAnalytics.getInstance(this).getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
+        Tracker tracker = getTracker(TrackerName.APP_TRACKER);
+        tracker.setScreenName("Список игр");
+        tracker.send(new HitBuilders.AppViewBuilder().build());
+        tracker.enableAdvertisingIdCollection(true);
 
         //mHandler.removeCallbacks(TimeUpdater);
 
@@ -88,6 +126,93 @@ public class MainActivity extends ActionBarActivity {
         }
         */
 
+    }
+
+    public int setRandomColor(){
+        Random r = new Random();
+
+        int color_id = r.nextInt(19 - 1) + 1;
+        Log.d("Color ID", String.valueOf(color_id));
+
+        if (color_id == 1){
+            colorPrimary = color_id_1;
+            return colorPrimary;
+        }else if (color_id == 2){
+            colorPrimary = color_id_2;
+            return colorPrimary;
+        }else if (color_id == 3) {
+            colorPrimary = color_id_3;
+            return colorPrimary;
+        }else if (color_id == 4) {
+            colorPrimary = color_id_4;
+            return colorPrimary;
+        }else if (color_id == 5) {
+            colorPrimary = color_id_5;
+            return colorPrimary;
+        }else if (color_id == 6) {
+            colorPrimary = color_id_6;
+            return colorPrimary;
+        }else if (color_id == 7) {
+            colorPrimary = color_id_7;
+            return colorPrimary;
+        }else if (color_id == 8) {
+            colorPrimary = color_id_8;
+            return colorPrimary;
+        }else if (color_id == 9) {
+            colorPrimary = color_id_9;
+            return colorPrimary;
+        }else if (color_id == 10) {
+            colorPrimary = color_id_10;
+            return colorPrimary;
+        }else if (color_id == 11) {
+            colorPrimary = color_id_11;
+            return colorPrimary;
+        }else if (color_id == 12) {
+            colorPrimary = color_id_12;
+            return colorPrimary;
+        }else if (color_id == 13) {
+            colorPrimary = color_id_13;
+            return colorPrimary;
+        }else if (color_id == 14) {
+            colorPrimary = color_id_14;
+            return colorPrimary;
+        }else if (color_id == 15) {
+            colorPrimary = color_id_15;
+            return colorPrimary;
+        }else if (color_id == 16) {
+            colorPrimary = color_id_16;
+            return colorPrimary;
+        }else if (color_id == 17) {
+            colorPrimary = color_id_17;
+            return colorPrimary;
+        }else if (color_id == 18) {
+            colorPrimary = color_id_18;
+            return colorPrimary;
+        }else if (color_id == 19) {
+            colorPrimary = color_id_19;
+            return colorPrimary;
+        }
+
+        return colorPrimary;
+    }
+
+    public void setABColor(){
+        setRandomColor();
+        Log.d("AB Color", String.valueOf(colorPrimary));
+        colorPrimaryDark = darker(colorPrimary);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(colorPrimary));
+        if (android.os.Build.VERSION.SDK_INT == 21){
+            getWindow().setStatusBarColor(colorPrimaryDark);
+        }
+    }
+
+    public static int darker(int c) {
+
+        int r = Color.red(c);
+        int b = Color.blue(c);
+        int g = Color.green(c);
+
+        return Color.rgb((int) (r * .7), (int) (g * .7), (int) (b * .7));
     }
 
     public void createList() {
@@ -112,6 +237,7 @@ public class MainActivity extends ActionBarActivity {
         gamesList = new ArrayList<HashMap<String, Object>>();
         HashMap<String, Object> games;
 
+        // Grand Theft Auto 5 PC
         games = new HashMap<String, Object>();
         games.put(TITLE, getString(R.string.gta5_name_1)); // Название
         games.put(DESCRIPTION, getString(R.string.gta5_desc_1)); // Описание
@@ -121,6 +247,7 @@ public class MainActivity extends ActionBarActivity {
         games.put(ICON, R.drawable.ic_gta); // Картинка
         gamesList.add(games);
 
+        // Wither 3
         games = new HashMap<String, Object>();
         games.put(TITLE, getString(R.string.witcher_name2));
         games.put(DESCRIPTION, getString(R.string.witcher_desc2));
@@ -142,19 +269,28 @@ public class MainActivity extends ActionBarActivity {
                                     long id) {
                 switch (position) {
                     case 0:
-                        link_2_wiki = "https://ru.wikipedia.org/wiki/Grand_Theft_Auto_V";
-                        Global.day_game = 24;
-                        Global.month_game = 5;
-                        mHandler.removeCallbacks(TimeUpdater);
-                        mHandler.postDelayed(TimeUpdater, 1000);
-                        showDialog(IDD_THREE_BUTTONS);
+                        Global.current_screenshot = R.drawable.gtavscr;
+                        Global.current_icon = R.drawable.ic_gta;
+                        Global.game_name = "Grand Theft Auto 5 PC";
+                        Global.game_desc = getString(R.string.gta5_desc_1);
+                        Global.out_day_full = 85;
+                        Global.out_day = 26;
+                        Global.out_month = 3;
+                        Global.out_year = 2015;
+                        Global.wiki_link = getString(R.string.gta5_wiki);
+                        Global.shop_link = "http://store.steampowered.com/app/271590";
+                        startActivity(new Intent(MainActivity.this, GameTimerActivity.class));
                         break;
                     case 1:
-                        /*
-                        Intent browserIntent1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ru.wikipedia.org/wiki/The_Witcher_3:_Wild_Hunt"));
-                        startActivity(browserIntent1);
-                        */
-                        Global.current_screenshot = R.drawable.gtavscr;
+                        Global.current_screenshot = R.drawable.witcherscr;
+                        Global.current_icon = R.drawable.ic_witcher;
+                        Global.game_name = "The Witcher 3";
+                        Global.game_desc = getString(R.string.witcher_desc2);
+                        Global.out_day = 19;
+                        Global.out_month = 5;
+                        Global.out_year = 2015;
+                        Global.wiki_link = getString(R.string.witcher_wiki);
+                        Global.shop_link = "http://store.steampowered.com/app/292030/";
                         startActivity(new Intent(MainActivity.this, GameTimerActivity.class));
                         break;
                     default:
@@ -226,15 +362,11 @@ public class MainActivity extends ActionBarActivity {
             Global.days_month = now.getActualMaximum(Calendar.DAY_OF_MONTH);
             Global.month_now = Global.month_now + 1;
 
-            Global.hour_game = 12;
-            Global.minute_game = 0;
-            Global.second_game = 0;
-
-            Global.day_left = Global.day_game - Global.day_now;
-            Global.month_left = Global.month_game - Global.month_now;
-            Global.hour_left = Global.hour_game - Global.hour_now;
-            Global.minute_left = Global.minute_game - Global.minute_now;
-            Global.second_left = Global.second_game - Global.second_now;
+            Global.day_left = Global.out_day - Global.day_now;
+            Global.month_left = Global.out_month - Global.month_now;
+            Global.hour_left = Global.out_hour - Global.hour_now;
+            Global.minute_left = Global.out_minute - Global.minute_now;
+            Global.second_left = Global.out_second - Global.second_now;
 
             if (Global.day_left <= 0) {
                 Global.month_left -= 1;
@@ -269,6 +401,27 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    public enum TrackerName {
+        APP_TRACKER, // Tracker used only in this app.
+        GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
+        ECOMMERCE_TRACKER, TrackerName, // Tracker used by all ecommerce transactions from a company.
+    }
+
+    public synchronized Tracker getTracker(TrackerName trackerId) {
+        if (!mTrackers.containsKey(trackerId)) {
+
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            analytics.getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
+            Tracker t = (trackerId == TrackerName.APP_TRACKER) ? analytics.newTracker(PROPERTY_ID)
+                    : (trackerId == TrackerName.GLOBAL_TRACKER) ? analytics.newTracker(
+                    R.xml.global_tracker)
+                    : analytics.newTracker(R.xml.ecommerce_tracker);
+            t.enableAdvertisingIdCollection(true);
+            mTrackers.put(trackerId, t);
+        }
+        return mTrackers.get(trackerId);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -297,6 +450,95 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Google adMob
+     * A placeholder fragment containing a simple view. This fragment
+     * would include your content.
+     */
+    public static class PlaceholderFragment extends android.app.Fragment {
+
+        public PlaceholderFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_my, container, false);
+            return rootView;
+        }
+    }
+
+    /**
+     * This class makes the ad request and loads the ad.
+     */
+    public static class AdFragment extends android.app.Fragment {
+
+        private AdView mAdView;
+
+        public AdFragment() {
+        }
+
+        @Override
+        public void onActivityCreated(Bundle bundle) {
+            super.onActivityCreated(bundle);
+
+            // Gets the ad view defined in layout/ad_fragment.xml with ad unit ID set in
+            // values/strings.xml.
+            mAdView = (AdView) getView().findViewById(R.id.adView);
+
+            // Create an ad request. Check logcat output for the hashed device ID to
+            // get test ads on a physical device. e.g.
+            // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("008ac50788cdf7e0")
+                    .build();
+
+            // Start loading the ad in the background.
+            mAdView.loadAd(adRequest);
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_ad, container, false);
+        }
+
+        /**
+         * Called when leaving the activity
+         */
+        @Override
+        public void onPause() {
+            if (mAdView != null) {
+                mAdView.pause();
+            }
+            super.onPause();
+        }
+
+        /**
+         * Called when returning to the activity
+         */
+        @Override
+        public void onResume() {
+            super.onResume();
+            if (mAdView != null) {
+                mAdView.resume();
+            }
+        }
+
+        /**
+         * Called before the activity is destroyed
+         */
+        @Override
+        public void onDestroy() {
+            if (mAdView != null) {
+                mAdView.destroy();
+            }
+            super.onDestroy();
+        }
+
+    }
+
     @Override
     protected void onPause() {
         // Удаляем Runnable-объект
@@ -307,6 +549,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        setABColor();
         // Добавляем Runnable-объект
         //mHandler.postDelayed(TimeUpdater, 1000);
     }
