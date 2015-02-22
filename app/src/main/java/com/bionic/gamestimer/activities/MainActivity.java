@@ -491,7 +491,7 @@ public class MainActivity extends ActionBarActivity {
             // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .addTestDevice("008ac50788cdf7e0")
+                    //.addTestDevice("008ac50788cdf7e0")
                     .build();
 
             // Start loading the ad in the background.
