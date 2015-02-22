@@ -20,6 +20,7 @@
     <string name="game_name">Game name</string>
     <string name="game_desc">Game description</string>
     <string name="game_date">Release date</string>
+    <string name="game_platform">Platform</string>
 
     <string-array name="games">
         <item>Survival Barren Roads (Android)</item>

@@ -40,6 +40,7 @@
             android:layout_marginLeft="@dimen/lv_hand_margin"
             android:layout_marginTop="@dimen/lv_topbot_margin_s"
             android:layout_marginStart="0dp"
+            android:text="@string/game_platform"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/color_platfotms"/>
@@ -51,6 +52,7 @@
             android:layout_marginTop="@dimen/lv_topbot_margin_s"
             android:layout_marginBottom="@dimen/lv_topbot_margin_l"
             android:layout_marginStart="0dp"
+            android:text="@string/game_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/color_date"/>
