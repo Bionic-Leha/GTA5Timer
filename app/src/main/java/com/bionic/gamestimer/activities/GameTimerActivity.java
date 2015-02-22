@@ -75,7 +75,7 @@ public class GameTimerActivity extends ActionBarActivity {
         GoogleAnalytics.getInstance(this).newTracker(PROPERTY_ID);
         GoogleAnalytics.getInstance(this).getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
         Tracker tracker = getTracker(MainActivity.TrackerName.APP_TRACKER);
-        tracker.setScreenName("Конкретная игра");
+        tracker.setScreenName(Global.game_name);
         tracker.send(new HitBuilders.AppViewBuilder().build());
         tracker.enableAdvertisingIdCollection(true);
 
