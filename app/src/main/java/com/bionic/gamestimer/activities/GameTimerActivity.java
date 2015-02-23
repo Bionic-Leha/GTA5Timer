@@ -1,5 +1,6 @@
 package com.bionic.gamestimer.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -9,13 +10,17 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.graphics.Palette;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bionic.gamestimer.Global;
 import com.bionic.gamestimer.R;
@@ -36,6 +41,7 @@ public class GameTimerActivity extends ActionBarActivity {
 
     ImageView ivScreen;
     ImageView ivIcon;
+    TextView tvInfo;
     TextView tvTimer;
     TextView tvGameName;
     TextView tvGameDesc;
@@ -46,6 +52,8 @@ public class GameTimerActivity extends ActionBarActivity {
 
     public int colorPrimary = Color.BLACK;
     public int colorPrimaryDark = Color.BLACK;
+
+    public static int counter = 1;
 
     private static final String PROPERTY_ID = "UA-42401203-8";
     static HashMap<MainActivity.TrackerName, Tracker> mTrackers = new HashMap<>();
@@ -65,12 +73,40 @@ public class GameTimerActivity extends ActionBarActivity {
         ivScreen = (ImageView) findViewById(R.id.ivScreen);
         ivIcon = (ImageView) findViewById(R.id.ivIcon);
         tvTimer = (TextView) findViewById(R.id.tvTimer);
+        tvInfo = (TextView) findViewById(R.id.tvInfo);
         tvGameName = (TextView) findViewById(R.id.tvGameName);
         tvGameDesc = (TextView) findViewById(R.id.tvGameDesc);
         btnWiki = (Button) findViewById(R.id.btnWiki);
         btnShop = (Button) findViewById(R.id.btnShop);
+        tvTimer.setText(getString(R.string.loading));
+        tvGameName.setText(Global.game_name);
+        tvGameDesc.setText(Global.game_desc);
+
         Calendar now = Calendar.getInstance();
         Global.currentday = now.get(Calendar.DAY_OF_YEAR);
+
+        mHandler.removeCallbacks(TimeUpdater);
+
+        Drawable screenshot = getResources().getDrawable(Global.current_screenshot);
+        Drawable icon = getResources().getDrawable(Global.current_icon);
+        ivScreen.setImageDrawable(screenshot);
+        ivIcon.setImageDrawable(icon);
+
+        Bitmap bitmap = ((BitmapDrawable) ivScreen.getDrawable()).getBitmap();
+        int pixel = bitmap.getPixel(x, y);
+        colorPrimary = pixel;
+        colorPrimaryDark = darker(colorPrimary);
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(colorPrimary));
+
+        if (android.os.Build.VERSION.SDK_INT == 21) {
+            getWindow().setStatusBarColor(colorPrimaryDark);
+        }
+
+        if (Global.current_screenshot != 0) {
+            screenshot = getResources().getDrawable(Global.current_screenshot);
+            ivScreen.setImageDrawable(screenshot);
+        }
 
         GoogleAnalytics.getInstance(this).newTracker(PROPERTY_ID);
         GoogleAnalytics.getInstance(this).getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
@@ -79,50 +115,27 @@ public class GameTimerActivity extends ActionBarActivity {
         tracker.send(new HitBuilders.AppViewBuilder().build());
         tracker.enableAdvertisingIdCollection(true);
 
-        tvTimer.setText(getString(R.string.loading));
-        tvGameName.setText(Global.game_name);
-        tvGameDesc.setText(Global.game_desc);
-
-        if (Global.currentday <= Global.out_day_full){
-            mHandler.removeCallbacks(TimeUpdater);
-        }else {
-            tvTimer.setText(getString(R.string.game_released));
-        }
-
-        Drawable screenshot = getResources().getDrawable(Global.current_screenshot);
-        Drawable icon = getResources().getDrawable(Global.current_icon);
-        ivScreen.setImageDrawable(screenshot);
-        ivIcon.setImageDrawable(icon);
-
-        if (Global.current_screenshot != 0){
-            screenshot = getResources().getDrawable(Global.current_screenshot);
-            ivScreen.setImageDrawable(screenshot);
-        }
-
-        Bitmap bitmap = ((BitmapDrawable) ivScreen.getDrawable()).getBitmap();
-        int pixel = bitmap.getPixel(x,y);
-        colorPrimary = pixel;
-        colorPrimaryDark = darker(colorPrimary);
-
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(colorPrimary));
-
-        if (android.os.Build.VERSION.SDK_INT == 21){
-            getWindow().setStatusBarColor(colorPrimaryDark);
-        }
-
         btnWiki.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(Global.wiki_link)));
-                startActivity(browserIntent1);
+                if (Global.wiki_link != null) {
+                    Intent browserIntent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(Global.wiki_link)));
+                    startActivity(browserIntent1);
+                } else {
+                    ifNotAvailable();
+                }
             }
         });
 
         btnShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(Global.shop_link)));
-                startActivity(browserIntent);
+                if (Global.shop_link != null) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(Global.shop_link)));
+                    startActivity(browserIntent);
+                } else {
+                    ifNotAvailable();
+                }
             }
         });
 
@@ -152,6 +165,43 @@ public class GameTimerActivity extends ActionBarActivity {
         }
         */
 
+    }
+
+    public void startTimer() {
+        Calendar now = Calendar.getInstance();
+        Global.currentday = now.get(Calendar.DAY_OF_YEAR);
+
+        if (Global.out_day == 0) {
+            tvInfo.setText(getString(R.string.no_date));
+            tvTimer.setText(Global.game_out);
+        } else if (Global.currentday > Global.out_day_full) {
+            tvTimer.setText(getString(R.string.game_released));
+        } else {
+            mHandler.postDelayed(TimeUpdater, 1000);
+        }
+    }
+
+    public void ifNotAvailable() {
+        final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (GameTimerActivity.counter == 1) {
+            Toast.makeText(GameTimerActivity.this, getString(R.string.not_available_1), Toast.LENGTH_SHORT).show();
+            GameTimerActivity.counter++;
+            vibrator.vibrate(90);
+        } else if (GameTimerActivity.counter == 3) {
+            Toast.makeText(GameTimerActivity.this, getString(R.string.not_available_3), Toast.LENGTH_SHORT).show();
+            GameTimerActivity.counter++;
+            vibrator.vibrate(90);
+        } else if (GameTimerActivity.counter == 10) {
+            Toast.makeText(GameTimerActivity.this, getString(R.string.not_available_10), Toast.LENGTH_SHORT).show();
+            GameTimerActivity.counter++;
+            vibrator.vibrate(90);
+        } else if (GameTimerActivity.counter == 20) {
+            Toast.makeText(GameTimerActivity.this, getString(R.string.not_available_20), Toast.LENGTH_SHORT).show();
+            btnShop.setEnabled(false);
+        } else {
+            GameTimerActivity.counter++;
+            vibrator.vibrate(90);
+        }
     }
 
     public synchronized Tracker getTracker(MainActivity.TrackerName trackerId) {
@@ -214,7 +264,7 @@ public class GameTimerActivity extends ActionBarActivity {
                 Global.second_left += 60;
             }
 
-            info =  + Global.month_left + " " + getString(R.string.month) + ", "
+            info = +Global.month_left + " " + getString(R.string.month) + ", "
                     + Global.day_left + " " + getString(R.string.days) + ", "
                     + Global.hour_left + " " + getString(R.string.hours) + ", "
                     + Global.minute_left + " " + getString(R.string.minutes) + ", "
@@ -245,6 +295,7 @@ public class GameTimerActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         // Добавляем Runnable-объект
-        mHandler.postDelayed(TimeUpdater, 1000);
+        //mHandler.postDelayed(TimeUpdater, 1000);
+        startTimer();
     }
 }

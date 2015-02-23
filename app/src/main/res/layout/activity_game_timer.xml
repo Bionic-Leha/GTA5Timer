@@ -43,7 +43,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
@@ -58,7 +58,7 @@
                     <TextView
                         android:id="@+id/tvGameDesc"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:text="@string/game_desc" />
 
                 </LinearLayout>
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/wiki"/>
+                    android:text="@string/wiki" />
 
                 <Button
                     android:id="@+id/btnShop"
@@ -89,30 +89,30 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@color/blue_grey_300"
-                android:layout_marginTop="@dimen/separator_margin"
                 android:layout_marginBottom="@dimen/separator_margin"
                 android:layout_marginLeft="@dimen/separator_margin"
-                android:layout_marginRight="@dimen/separator_margin"/>
+                android:layout_marginRight="@dimen/separator_margin"
+                android:layout_marginTop="@dimen/separator_margin"
+                android:background="@color/blue_grey_300" />
 
             <TextView
                 android:id="@+id/tvInfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:text="@string/game_left"
                 android:textAllCaps="true"
-                android:textSize="22sp"
                 android:textColor="#000"
-                android:text="@string/game_left"/>
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/tvTimer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_marginTop="3dp"
-                android:textSize="16dp"
-                android:text="@string/error" />
+                android:gravity="center"
+                android:text="@string/error"
+                android:textSize="16dp" />
 
         </LinearLayout>
 

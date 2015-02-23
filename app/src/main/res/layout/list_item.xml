@@ -3,66 +3,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="5"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginLeft="@dimen/lv_hand_margin"
-            android:layout_marginTop="@dimen/lv_topbot_margin_l"
-            android:layout_marginStart="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/lv_hand_margin"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="@dimen/lv_topbot_margin_l"
             android:text="@string/game_name"
-            android:textSize="20sp"
-            android:textColor="@color/color_name"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/color_name"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvDesc"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginLeft="@dimen/lv_hand_margin"
-            android:layout_marginStart="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/lv_hand_margin"
+            android:layout_marginStart="0dp"
             android:text="@string/game_desc"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/color_desc"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvPlatforms"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginLeft="@dimen/lv_hand_margin"
-            android:layout_marginTop="@dimen/lv_topbot_margin_s"
-            android:layout_marginStart="0dp"
-            android:text="@string/game_platform"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_platfotms"/>
+            android:layout_marginLeft="@dimen/lv_hand_margin"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="@dimen/lv_topbot_margin_s"
+            android:text="@string/game_platform"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/color_platfotms" />
 
         <TextView
             android:id="@+id/tvDate"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginLeft="@dimen/lv_hand_margin"
-            android:layout_marginTop="@dimen/lv_topbot_margin_s"
-            android:layout_marginBottom="@dimen/lv_topbot_margin_l"
-            android:layout_marginStart="0dp"
-            android:text="@string/game_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_date"/>
+            android:layout_marginBottom="@dimen/lv_topbot_margin_l"
+            android:layout_marginLeft="@dimen/lv_hand_margin"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="@dimen/lv_topbot_margin_s"
+            android:text="@string/game_date"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/color_date" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/img"
-        android:layout_gravity="center"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_weight="1"
         android:src="@drawable/ic_launcher" />
 
