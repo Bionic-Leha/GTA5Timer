@@ -344,6 +344,15 @@ public class MainActivity extends ActionBarActivity {
         games.put(ICON, R.drawable.ic_tom);
         gamesList.add(games);
 
+        // Batman: Arkham Knight
+        games = new HashMap<String, Object>();
+        games.put(TITLE, getString(R.string.batman_name));
+        games.put(DESCRIPTION, getString(R.string.batman_desc));
+        games.put(PLATFORM, PC + comma + PS4 + comma + XONE);
+        games.put(DATE, OUTDAY + ": " + getString(R.string.batman_date));
+        games.put(ICON, R.drawable.ic_batman);
+        gamesList.add(games);
+
         SimpleAdapter adapter = new SimpleAdapter(this, gamesList,
                 R.layout.list_item, new String[]{TITLE, DESCRIPTION, PLATFORM, DATE, ICON},
                 new int[]{R.id.tvTitle, R.id.tvDesc, R.id.tvPlatforms, R.id.tvDate, R.id.img});
@@ -406,6 +415,20 @@ public class MainActivity extends ActionBarActivity {
                         Global.game_out = getString(R.string.tom_clansy_date);
                         Global.wiki_link = getString(R.string.tom_clansy_wiki);
                         Global.shop_link = null;
+                        startActivity(new Intent(MainActivity.this, GameTimerActivity.class));
+                        break;
+                    case 4:
+                        Global.current_screenshot = R.drawable.scr_batman;
+                        Global.current_icon = R.drawable.ic_batman;
+                        Global.game_name = getString(R.string.batman_name);
+                        Global.game_desc = getString(R.string.batman_desc);
+                        Global.out_day_full = 153;
+                        Global.out_day = 2;
+                        Global.out_month = 6;
+                        Global.out_year = 2015;
+                        Global.game_out = getString(R.string.batman_date);
+                        Global.wiki_link = getString(R.string.batman_wiki);
+                        Global.shop_link = "http://store.steampowered.com/app/208650/";
                         startActivity(new Intent(MainActivity.this, GameTimerActivity.class));
                         break;
                     default:

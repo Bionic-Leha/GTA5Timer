@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Games Releases Timer</string>
+    <string name="app_name">Releases Timer</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_about">About app</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-7582649126900684/9039323258</string>

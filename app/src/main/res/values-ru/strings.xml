@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Таймер релизов игр</string>
+    <string name="app_name">Релизный таймер</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Настройки</string>
-
     <string name="game_left">До выхода игры осталось:</string>
     <string name="month">мес.</string>
     <string name="days">дн.</string>
@@ -45,7 +44,6 @@
     <string name="banned_desc">Дальнейшая работа невозможна, так как вы пользуетесь данным приложением, которое может удалить рекламу. Удалите его, и возвращайтесь =)</string>
     <string name="no_connect">Нет подключения к интернету</string>
     <string name="no_connect_desc">Вы можете пользоваться приложением без интернета всего один день. После истечения этого времени вам потребуется открыть приложение с интернетом, иначе оно не будет работать.</string>
-
     <string name="mortal_x_desc">Игра предлагает новую, оригинальную и нелинейную сюжетную линию</string>
     <string name="mortal_x_wiki">https://ru.wikipedia.org/wiki/Mortal_Kombat_X</string>
     <string name="tom_clansy_desc">Действие игры будет разворачиваться в предапокалиптическом Нью-Йорке недалёкого будущего</string>
