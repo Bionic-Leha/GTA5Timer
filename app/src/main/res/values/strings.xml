@@ -28,6 +28,7 @@
     <string name="not_available_10">WHAT ARE YOU, B***H, DID NOT UNDERSTAND!?</string>
     <string name="not_available_20">THIS INFORMATION HAS NO AVAILABLE!</string>
 
+    <!--
     <string-array name="games">
         <item>Survival Barren Roads (Android)</item>
         <item>portal 3</item>
@@ -36,6 +37,7 @@
         <item>Fallout 4</item>
         <item>the room 3</item>
     </string-array>
+    -->
 
     <string name="gta5_name_1" translatable="false">Grand Theft Auto 5</string>
     <string name="gta5_desc_1">Game-legend</string>

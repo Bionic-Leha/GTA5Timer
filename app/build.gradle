@@ -28,7 +28,7 @@ android {
         defaultConfig {
             applicationId "com.bionic.gamestimer"
             versionCode code
-            versionName "0.9.9"
+            versionName "1.0.0"
             minSdkVersion 15
             targetSdkVersion 21
             signingConfig signingConfigs.release

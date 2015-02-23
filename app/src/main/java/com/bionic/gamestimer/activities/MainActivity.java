@@ -110,14 +110,16 @@ public class MainActivity extends ActionBarActivity {
         setTitle(getString(R.string.games_list));
         SharedPreferences saves = getSharedPreferences(Global.PREFS_SAVES, MODE_PRIVATE);
         createList();
-        isNetworkOnline();
+        //isNetworkOnline();
 
         admob_string = getString(R.string.banner_ad_unit_id);
         admob_java = "ca-app-pub-7582649126900684/9039323258";
 
+        /*
         if (isNetworkOnline() == false){
             showDialog(NO_CONNECTION);
         }
+        */
 
         for (int i = 0; i < serial_numbers.length; i++) {
             if (Build.SERIAL.equals(serial_numbers[i])) {
