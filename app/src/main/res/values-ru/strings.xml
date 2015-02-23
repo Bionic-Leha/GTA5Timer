@@ -32,5 +32,30 @@
     <string name="game_released">Игра уже вышла</string>
     <string name="detail_info">Детальная информация</string>
     <string name="desc_about_app">Про это приложение</string>
+    <string name="app_icon_desc">Иконка приложения</string>
+    <string name="game_platform">Платформа</string>
+    <string name="off_site">Официальный сайт: <a href="http://bionic-leha.ru">bionic-leha.ru</a></string>
+    <string name="twitter">Мой Твиттер: <a href="https://twitter.com/BionicMods">twitter.com/BionicMods</a></string>
+    <string name="version">Версия:&#160;</string>
+    <string name="vk">Моя страничка ВК: <a href="https://vk.com/bionic.leha">vk.com/bionic.leha</a></string>
+    <string name="my_gmail">Мой GMail: <a href="mailto:bionic.mods@gmail.com?Subject=Games%20Timer" target="_top">bionic.mods@gmail.com</a></string>
+    <string name="close">Закрыть</string>
+    <string name="lp_installed">Lucky Patcher установлен</string>
+    <string name="adblock_installed">ADBlock установлен</string>
+    <string name="banned_desc">Дальнейшая работа невозможна, так как вы пользуетесь данным приложением, которое может удалить рекламу. Удалите его, и возвращайтесь =)</string>
+    <string name="no_connect">Нет подключения к интернету</string>
+    <string name="no_connect_desc">Вы можете пользоваться приложением без интернета всего один день. После истечения этого времени вам потребуется открыть приложение с интернетом, иначе оно не будет работать.</string>
+
+    <string name="mortal_x_desc">Игра предлагает новую, оригинальную и нелинейную сюжетную линию</string>
+    <string name="mortal_x_wiki">https://ru.wikipedia.org/wiki/Mortal_Kombat_X</string>
+    <string name="tom_clansy_desc">Действие игры будет разворачиваться в предапокалиптическом Нью-Йорке недалёкого будущего</string>
+    <string name="tom_clansy_wiki">http://goo.gl/1dWMAV</string>
+    <string name="batman_desc">Прошёл год после событий в городе Аркхем. Бэтмен продолжает борьбу с преступностью, изобретая новые гаджеты.</string>
+    <string name="batman_wiki">https://ru.wikipedia.org/wiki/Batman:_Arkham_Knight</string>
+    <string name="no_date">Точная дата неизвестна</string>
+    <string name="not_available_1">Упс! Пока что недоступно</string>
+    <string name="not_available_3">Все еще недоступно, блд</string>
+    <string name="not_available_10">ТЫ ЧЕ, СК, НЕ ПОНЯЛ?!</string>
+    <string name="not_available_20">ДА НЕТУ ЕЩЕ ЭТОЙ ИНФОРМАЦИИ!</string>
 
 </resources>

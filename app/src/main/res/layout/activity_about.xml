@@ -1,23 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gameView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/gameView">
+    android:orientation="vertical">
 
-    <!-- A CardView that contains a TextView -->
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        card_view:cardCornerRadius="4dp">
 
-        <TextView
-            android:id="@+id/info_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </android.support.v7.widget.CardView>
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@string/app_icon_desc"
+        android:src="@mipmap/ic_launcher" />
 
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/version"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:autoLink="web"
+        android:text="@string/off_site"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvTwitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:autoLink="web"
+        android:text="@string/twitter"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvVK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:autoLink="web"
+        android:text="@string/vk"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvGmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:autoLink="email"
+        android:text="@string/my_gmail"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="16sp" />
 </LinearLayout>

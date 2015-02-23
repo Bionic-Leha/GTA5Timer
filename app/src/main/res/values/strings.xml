@@ -7,6 +7,7 @@
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-7582649126900684/9039323258</string>
 
     <string name="game_left">This game to left</string>
+    <string name="no_date">The exact date is unknown</string>
     <string name="month">Months</string>
     <string name="days">Days</string>
     <string name="hours">Hours</string>
@@ -21,6 +22,11 @@
     <string name="game_desc">Game description</string>
     <string name="game_date">Release date</string>
     <string name="game_platform">Platform</string>
+    
+    <string name="not_available_1">Oops! Yet available</string>
+    <string name="not_available_3">Still available, lol</string>
+    <string name="not_available_10">WHAT ARE YOU, B***H, DID NOT UNDERSTAND!?</string>
+    <string name="not_available_20">THIS INFORMATION HAS NO AVAILABLE!</string>
 
     <string-array name="games">
         <item>Survival Barren Roads (Android)</item>
@@ -42,6 +48,21 @@
     <string name="witcher_wiki">http://en.wikipedia.org/wiki/The_Witcher_3:_Wild_Hunt</string>
 
     <string name="tes6_n3" translatable="false">The Elder Scrolls 6</string>
+
+    <string name="mortal_x_name" translatable="false">Mortal Combat X</string>
+    <string name="mortal_x_desc">The game offers a new, original and non-linear storyline</string>
+    <string name="mortal_x_date" translatable="false">14.04.2015</string>
+    <string name="mortal_x_wiki">https://en.wikipedia.org/wiki/Mortal_Kombat_X</string>
+
+    <string name="tom_clansy_name" translatable="false">Tom Clancy’s The Division</string>
+    <string name="tom_clansy_desc">The game will unfold in the pre apocalyptic New York near future</string>
+    <string name="tom_clansy_date" translatable="false">2015</string>
+    <string name="tom_clansy_wiki">https://en.wikipedia.org/wiki/Tom_Clancy%27s_The_Division</string>
+
+    <string name="batman_name" translatable="false">Batman: Arkham Knight</string>
+    <string name="batman_desc">A year has passed since the events in Arkham. Batman continues the fight against crime, inventing new gadgets.</string>
+    <string name="batman_date" translatable="false">02.06.2015</string>
+    <string name="batman_wiki">https://en.wikipedia.org/wiki/Batman:_Arkham_Knight</string>
 
     <string name="me2_n4" translatable="false">Mirrors Edge (Remake)</string>
 
@@ -77,8 +98,19 @@
 
     <string name="first_run">Welcome! This program will help you to find out information about new games, you can see the timer in real time, to read some of the information as well as being open the article on Wikipedia. To view information about the game - just click on it.</string>
 
-
     <string name="desc_about_app">About this app</string>
     <string name="action_settings">Settings</string>
+    <string name="app_icon_desc">App icon</string>
+    <string name="version">Version:&#160;</string>
+    <string name="off_site">Official site: <a href="http://bionic-leha.ru">bionic-leha.ru</a></string>
+    <string name="twitter">My Twitter: <a href="https://twitter.com/BionicMods">twitter.com/BionicMods</a></string>
+    <string name="vk">My VK Page: <a href="https://vk.com/bionic.leha">vk.com/bionic.leha</a></string>
+    <string name="my_gmail">My GMail: <a href="mailto:bionic.mods@gmail.com?subject=Games Timer" target="_top">bionic.mods@gmail.com</a></string>
 
+    <string name="close">Close</string>
+    <string name="lp_installed">Lucky Patcher installed</string>
+    <string name="adblock_installed">ADBlock installed</string>
+    <string name="banned_desc">Further work is impossible, since you are using the application, which can remove ads. Remove it, and come back =)</string>
+    <string name="no_connect">No internet connect</string>
+    <string name="no_connect_desc">You can use the application without the internet one day. After this time you will need to open the application to the Internet, otherwise it will not work.</string>
 </resources>
