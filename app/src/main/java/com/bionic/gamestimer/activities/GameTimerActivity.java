@@ -254,6 +254,11 @@ public class GameTimerActivity extends ActionBarActivity {
                 Global.day_left += Global.days_month;
             }
 
+            if (Global.hour_left <= 0) {
+                Global.day_left -= 1;
+                Global.hour_left += 24;
+            }
+
             if (Global.minute_left <= 0) {
                 Global.hour_left -= 1;
                 Global.minute_left += 60;

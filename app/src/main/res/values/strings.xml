@@ -41,7 +41,7 @@
 
     <string name="gta5_name_1" translatable="false">Grand Theft Auto 5</string>
     <string name="gta5_desc_1">Game-legend</string>
-    <string name="gta5_date_1" translatable="false">24.03.2014</string>
+    <string name="gta5_date_1" translatable="false">14.04.2014</string>
     <string name="gta5_wiki">https://en.wikipedia.org/wiki/Grand_Theft_Auto_V</string>
 
     <string name="witcher_name2" translatable="false">The Witcher 3</string>
@@ -65,6 +65,20 @@
     <string name="batman_desc">A year has passed since the events in Arkham. Batman continues the fight against crime, inventing new gadgets.</string>
     <string name="batman_date" translatable="false">02.06.2015</string>
     <string name="batman_wiki">https://en.wikipedia.org/wiki/Batman:_Arkham_Knight</string>
+
+    <string name="lotf_name">Lords of the Fallen: Ancient Labyrinth</string>
+    <string name="lotf_desc">«Древний Лабиринт» отправит главного героя Lords of the Fallen в давно забытую библиотеку, запертую между измерениями людей и демонов много тысяч лет назад.</string>
+    <string name="lotf_date">03.03.2015</string>
+
+    <string name="hd_name">Helldivers</string>
+    <string name="hd_desc"></string>
+    <string name="hd_date"></string>
+    <string name="hd_wiki"></string>
+
+    <string name="scr_name">ScreamRide</string>
+    <string name="scr_desc">ScreamRide</string>
+    <string name="scr_date">ScreamRide</string>
+    <string name="scr_wiki">ScreamRide</string>
 
     <string name="me2_n4" translatable="false">Mirrors Edge (Remake)</string>
 

@@ -33,6 +33,8 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Logger;
 import com.google.android.gms.analytics.Tracker;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -41,6 +43,11 @@ import java.util.Random;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -158,6 +165,7 @@ public class MainActivity extends ActionBarActivity {
             return false;
         }
     }
+
 
     // Установлены ли запрещенные приложения!?
     public void checkInstalled() {
@@ -371,9 +379,10 @@ public class MainActivity extends ActionBarActivity {
                         Global.current_icon = R.drawable.ic_gta;
                         Global.game_name = "Grand Theft Auto 5 PC";
                         Global.game_desc = getString(R.string.gta5_desc_1);
-                        Global.out_day_full = 85;
-                        Global.out_day = 26;
-                        Global.out_month = 3;
+                        Global.out_day_full = 104;
+                        Global.out_hour = 2;
+                        Global.out_day = 14;
+                        Global.out_month = 4;
                         Global.out_year = 2015;
                         Global.wiki_link = getString(R.string.gta5_wiki);
                         Global.shop_link = "http://store.steampowered.com/app/271590";
@@ -610,6 +619,12 @@ public class MainActivity extends ActionBarActivity {
             showDialog(FIRST_RUN);
             return true;
         }
+        /*
+        if (id == R.id.action_test) {
+            startActivity(new Intent (MainActivity.this, JsoupActivity.class));
+            return true;
+        }
+        */
 
         return super.onOptionsItemSelected(item);
     }

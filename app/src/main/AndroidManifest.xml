@@ -40,6 +40,9 @@
             android:label="@string/about_game"
             android:parentActivityName=".activities.MainActivity">
         </activity>
+        <activity
+            android:name=".activities.JsoupActivity">
+        </activity>
     </application>
 
 </manifest>
